@@ -1,21 +1,25 @@
 package com.example.android.wallpaper;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.android.wallpaper.Adapter.MyFragmentAdapter;
+import com.example.android.wallpaper.Utils.Constants;
 
 public class HomeActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +34,13 @@ public class HomeActivity extends AppCompatActivity
 		toolbar.setTitle("Wallpaper");
 		setSupportActionBar(toolbar);
 		
+		
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+				!= PackageManager.PERMISSION_GRANTED) {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+				requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.REQUEST_CODE);
+			}
+		}
 		
 		viewPager = findViewById(R.id.viewpager);
 		MyFragmentAdapter adapter = new MyFragmentAdapter(getSupportFragmentManager(),this);
@@ -46,6 +57,19 @@ public class HomeActivity extends AppCompatActivity
 		
 		NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 		navigationView.setNavigationItemSelectedListener(this);
+	}
+	
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		switch (requestCode) {
+			case Constants.REQUEST_CODE:
+				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+					Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getApplicationContext(), "you edd to accept this permission to download this image", Toast.LENGTH_SHORT).show();
+				}
+		}
 	}
 	
 	@Override

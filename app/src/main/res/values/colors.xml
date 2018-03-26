@@ -5,4 +5,5 @@
     <color name="colorAccent">@android:color/black</color>
 
     <color name="blackoverlay">#66e40c0c</color>
+    <color name="CategoryTextBackground">#BF333333</color>
 </resources>

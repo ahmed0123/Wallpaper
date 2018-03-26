@@ -1,9 +1,9 @@
 package com.example.android.wallpaper;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 	
@@ -20,6 +20,6 @@ public class MainActivity extends AppCompatActivity {
 			startActivity(new Intent(MainActivity.this,HomeActivity.class));
 			finish();
 			}
-		},3000);// wait for 3 second
+		}, 5000);// wait for 3 second
 	}
 }
