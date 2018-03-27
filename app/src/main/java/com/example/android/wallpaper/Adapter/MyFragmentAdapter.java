@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.android.wallpaper.Fragment.CategoryFragment;
-import com.example.android.wallpaper.Fragment.DailyPopularFragment;
 import com.example.android.wallpaper.Fragment.RecentsFragment;
+import com.example.android.wallpaper.Fragment.TrendingFragment;
 
 /**
  * Created by Ahmed El Hendawy on 2018/03/25.
@@ -29,7 +29,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 		if (position == 0)
 			return CategoryFragment.getInstance();
 		else if (position == 1)
-			return DailyPopularFragment.getInsatnce();
+			return TrendingFragment.getInsatnce();
 		else if (position == 2)
 			return RecentsFragment.getInstance(context);
 		else return null;
@@ -48,7 +48,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
 				return "Category";
 			
 			case 1:
-				return "DailyPopular";
+				return "Trending";
 			
 			case 2:
 				return "Recents";
