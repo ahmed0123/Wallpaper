@@ -2,8 +2,8 @@ package com.example.android.wallpaper.Database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.support.annotation.NonNull;
 
-import io.reactivex.annotations.NonNull;
 
 /**
  * Created by Ahmed El Hendawy on 2018/03/27.
