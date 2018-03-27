@@ -7,6 +7,7 @@ package com.example.android.wallpaper.Model;
 public class WallpaperItem {
 	public String imageLink;
 	public String categoryId;
+	public long viewCount;
 	
 	public WallpaperItem() {
 	}
@@ -30,5 +31,13 @@ public class WallpaperItem {
 	
 	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
+	}
+	
+	public long getViewCount() {
+		return viewCount;
+	}
+	
+	public void setViewCount(long viewCount) {
+		this.viewCount = viewCount;
 	}
 }
