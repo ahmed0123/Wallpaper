@@ -31,6 +31,11 @@ public class RecentAdapter extends RecyclerView.Adapter<WallpaperItemViewHolder>
 	private Context context;
 	private List<Recents> recents;
 	
+	public RecentAdapter(Context context, List<Recents> recents) {
+		this.context = context;
+		this.recents = recents;
+	}
+	
 	@NonNull
 	@Override
 	public WallpaperItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
