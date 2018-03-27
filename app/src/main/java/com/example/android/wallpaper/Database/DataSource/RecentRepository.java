@@ -20,7 +20,7 @@ public class RecentRepository implements IRecentsDataSource {
 		this.mLocalDataSource = mLocalDataSource;
 	}
 	
-	public static RecentRepository getinstance(IRecentsDataSource mLocalDataSource) {
+	public static RecentRepository getInstance(IRecentsDataSource mLocalDataSource) {
 		
 		if (instance == null) {
 			instance = new RecentRepository(mLocalDataSource);
