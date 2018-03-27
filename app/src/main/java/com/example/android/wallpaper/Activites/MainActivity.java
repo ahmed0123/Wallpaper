@@ -1,9 +1,11 @@
-package com.example.android.wallpaper;
+package com.example.android.wallpaper.Activites;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.android.wallpaper.R;
 
 public class MainActivity extends AppCompatActivity {
 	

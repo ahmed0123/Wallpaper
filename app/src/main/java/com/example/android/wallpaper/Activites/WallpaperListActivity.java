@@ -1,4 +1,4 @@
-package com.example.android.wallpaper;
+package com.example.android.wallpaper.Activites;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.android.wallpaper.Interfaces.ItemClickListener;
 import com.example.android.wallpaper.Model.WallpaperItem;
+import com.example.android.wallpaper.R;
 import com.example.android.wallpaper.Utils.Constants;
 import com.example.android.wallpaper.ViewHolder.WallpaperItemViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;

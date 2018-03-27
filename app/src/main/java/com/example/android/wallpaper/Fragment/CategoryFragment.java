@@ -12,12 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.wallpaper.Activites.WallpaperListActivity;
 import com.example.android.wallpaper.Interfaces.ItemClickListener;
 import com.example.android.wallpaper.Model.CategoryItem;
 import com.example.android.wallpaper.R;
 import com.example.android.wallpaper.Utils.Constants;
 import com.example.android.wallpaper.ViewHolder.CategoryViewHolder;
-import com.example.android.wallpaper.WallpaperListActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;

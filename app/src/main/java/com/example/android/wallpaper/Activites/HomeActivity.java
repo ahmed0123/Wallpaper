@@ -1,4 +1,4 @@
-package com.example.android.wallpaper;
+package com.example.android.wallpaper.Activites;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.android.wallpaper.Adapter.MyFragmentAdapter;
+import com.example.android.wallpaper.R;
 import com.example.android.wallpaper.Utils.Constants;
 
 public class HomeActivity extends AppCompatActivity

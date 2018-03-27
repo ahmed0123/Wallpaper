@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/FullScreenTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activites.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activites.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/FullScreenTheme" />
-        <activity android:name=".WallpaperListActivity" />
-        <activity android:name=".ViewWallpaperActivity"></activity>
+        <activity android:name=".Activites.WallpaperListActivity" />
+        <activity android:name=".Activites.ViewWallpaperActivity"></activity>
     </application>
 
 </manifest>

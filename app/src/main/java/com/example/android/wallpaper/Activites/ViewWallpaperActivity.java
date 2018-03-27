@@ -1,4 +1,4 @@
-package com.example.android.wallpaper;
+package com.example.android.wallpaper.Activites;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.android.wallpaper.Helper.SaveImageHelper;
+import com.example.android.wallpaper.R;
 import com.example.android.wallpaper.Utils.Constants;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
