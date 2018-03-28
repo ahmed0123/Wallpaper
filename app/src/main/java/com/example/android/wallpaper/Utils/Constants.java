@@ -14,4 +14,5 @@ public class Constants {
 	public static String CATEGORY_NAME;
 	public static WallpaperItem select_background = new WallpaperItem();
 	public static String selected_Background_key;
+	public static int SIGN_IN_REQUEST_CODE = 10001;
 }
