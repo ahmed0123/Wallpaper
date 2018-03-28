@@ -30,6 +30,14 @@ import com.example.android.wallpaper.Helper.SaveImageHelper;
 import com.example.android.wallpaper.Model.WallpaperItem;
 import com.example.android.wallpaper.R;
 import com.example.android.wallpaper.Utils.Constants;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -63,6 +71,14 @@ public class ViewWallpaperActivity extends AppCompatActivity {
 	ImageView imageView;
 	CompositeDisposable compositeDisposable;
 	RecentRepository recentRepository;
+	
+	FloatingActionMenu mainFloating;
+	com.github.clans.fab.FloatingActionButton fbShare;
+	
+	CallbackManager callbackManager;
+	ShareDialog shareDialog;
+	
+	
 	private Target target = new Target() {
 		@Override
 		public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -73,6 +89,30 @@ public class ViewWallpaperActivity extends AppCompatActivity {
 				wallpaperManager.setBitmap(bitmap);
 			} catch (IOException e) {
 				e.printStackTrace();
+			}
+		}
+		
+		@Override
+		public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+		
+		}
+		
+		@Override
+		public void onPrepareLoad(Drawable placeHolderDrawable) {
+		
+		}
+	};
+	private Target facebookConvertBitmap = new Target() {
+		@Override
+		public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+			
+			SharePhoto sharePhoto = new SharePhoto.Builder().setBitmap(bitmap).build();
+			
+			if (shareDialog.canShow(SharePhotoContent.class)) {
+				SharePhotoContent content = new SharePhotoContent.Builder()
+						.addPhoto(sharePhoto)
+						.build();
+				shareDialog.show(content);
 			}
 		}
 		
@@ -97,6 +137,9 @@ public class ViewWallpaperActivity extends AppCompatActivity {
 		if (getSupportActionBar() != null)
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
+		callbackManager = CallbackManager.Factory.create();
+		shareDialog = new ShareDialog(this);
+		
 		setRoomDatabase();
 		
 		coordinatorLayout = findViewById(R.id.rootLayout);
@@ -111,7 +154,36 @@ public class ViewWallpaperActivity extends AppCompatActivity {
 				.load(Constants.select_background.getImageLink())
 				.into(imageView);
 		
-		
+		mainFloating = findViewById(R.id.menu);
+		fbShare = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.facebook_share);
+		fbShare.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				
+				shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+					
+					@Override
+					public void onSuccess(Sharer.Result result) {
+						Toast.makeText(ViewWallpaperActivity.this, "Shared Successful", Toast.LENGTH_SHORT).show();
+					}
+					
+					@Override
+					public void onCancel() {
+						Toast.makeText(ViewWallpaperActivity.this, "Shared canceled", Toast.LENGTH_SHORT).show();
+						
+					}
+					
+					@Override
+					public void onError(FacebookException error) {
+						Toast.makeText(ViewWallpaperActivity.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+						
+					}
+				});
+				
+				Picasso.get().load(Constants.select_background.getImageLink()).into(facebookConvertBitmap);
+			}
+			
+		});
 		//save image background to database
 		addToRecents();
 		wallpaperFab = findViewById(R.id.fabWallpaper);
